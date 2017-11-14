@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>无刷新加载页面</title>		
+		<script src="jquery.min.js"></script>
+		<script src="arc.js"></script>
+		<style>
+			body{font-family: "microsoft yahei"; font-size: 13px; color: #333;}
+			ul,li{margin: 0; padding: 0; list-style: none;}
+			.header{ background: #000; height: 80px; line-height: 80px;}
+			.header ul:after{ clear: both; display: table;}
+			.header ul li{ width: 20%; float: left; text-align: center;}
+			.header ul li a{color: #ccc; background: #000; display: block; font-size: 16px; text-decoration: none; margin-right: 2px;}
+			.header ul li a:hover,
+			.header ul li.active a{color: #fff; background: #333;}
+			.header button{ padding: 20px; cursor: pointer;}
+		</style>
+		<script>
+			$(function(){
+				var _opts = { //配置项
+					ajax_tab:'.arc_menu',
+					ajax_content:'content',
+					ajax_num:4,
+					ajax_title:'无刷新加载页面',
+					default_url:'demo1',
+					default_id:0
+				};
+				var arc_ajxatab = new arcajxatab(_opts);
+				window.arc_ajxatab = arc_ajxatab;
+				arc_ajxatab.init();
+				arc_ajxatab.click('#demo1');	
+				arc_ajxatab.click('#demo2');				
+			});
+		</script>
+	</head>
+	<body>
+		<header class="header">
+			<ul class="arc_menu">
+				<li class="active"><a href="javascript:;" data-url="demo1">首页</a></li>
+				<li><a href="javascript:;" data-url="demo2">关于我们</a></li>
+				<li><a href="javascript:;" data-url="demo3">产品展示</a></li>
+				<li><a href="javascript:;" data-url="demo4">联系我们</a></li>
+			</ul>
+			<button id="demo1" data-url="demo2">任意链接一</button>
+			<button id="demo2" data-url="demo3">任意链接二</button>
+		</header>
+		<section class="content"></section>
+	</body>
+</html>
